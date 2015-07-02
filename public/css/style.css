@@ -3,37 +3,84 @@ html, body {
   height: 100%;
 }
 
-.navbar-default {
-	
-  background-color: rgba(255, 255, 255, 0.20);
-  border: none;
+.nav-tabs {
+  
+  border:none !important;
 }
+
+.nav-tabs > li > a {
+  
+  border: none;
+  color: #333333;
+  border-radius: 0;
+  transition: all 0.3s;
+}
+
+.navigation {
+	
+  background-color:rgba(255,255,255,0.1);
+  border: none;
+  width: 100%;
+  position: fixed;
+  z-index: 1000;
+  padding: 1rem 0;
+
+  }
+  
+  .navigation .container {
+    
+      display: flex;
+      align-items:center;
+  }
+  .head-logo {
+    
+    margin-right: 50px;
+    font-size: 2.5rem;
+  }
 
 .site-wrapper {
     
     max-width: 100%;
-    height: 100%
+    height: 100%;
 }
 
 .cover {
   
-  max-height: 100%;
+  height: 100%;
+  max-height: 750px;
   overflow: hidden;
-}
-
-.cover img {
+  background: url('../img/home.jpg') no-repeat center;
+  background-size: auto;
   
-  width: 100%;
-}
+  }
+  
 
 .tab {
   
   width: 100%;
-  height: 500px;
-  background-color: #141b23;
+  height: 600px;
+  background: url('../img/shattered.png') repeat;
+  
 }
 
 .login {
   
   margin-top: 70px;
+}
+
+.headlines {
+  
+  margin-top: 80px;
+}
+
+.headlines h1 {
+  font-size:6.2rem;
+  margin: 0;
+  letter-spacing: 2px;
+}
+
+.headlines .subtitle {
+  
+  font-size: 2rem;
+
 }
