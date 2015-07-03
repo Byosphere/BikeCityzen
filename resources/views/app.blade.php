@@ -20,22 +20,38 @@
 	<![endif]-->
 </head>
 <body>
-	<nav class="navigation">
+	<nav class="navigation top">
 		<div class="container">
-			<div class="head-logo"><b>BIKE</b>CITYZEN</div>
+			<div class="brand">
+				<div class="logo">
+					<img src="{{ asset('/img/logo.svg') }}" alt="">
+				</div>
+				<div class="head-logo"><a href="#"><b>BIKE</b>CITYZEN</a></div>
+			</div>
 			<ul class='nav nav-tabs'>
-				<li><a href="">Accueil</a></li>
-				<li><a href="">Location</a></li>
-				<li><a href="">Réparation</a></li>
-				<li><a href="">contact</a></li>
+				<li><a href="#">Accueil</a></li>
+				<li><a href="#">Location</a></li>
+				<li><a href="#">Réparation</a></li>
+				<li><a href="#">contact</a></li>
+			</ul>
+			<ul class='nav nav-tabs connexion-menu'>
+				<li><a href="{{ url('/auth/register') }}">Inscription</a></li>
+				<li><a href="#">Se connecter</a></li>
 			</ul>
 		</div>
+		<a href="#" class="button-menu">
+		</a>
 	</nav>
-
-	@yield('content')
-
+		@yield('content')
+		<footer>
+			<div class="container">
+				<p>Copyright © 2015 <b>Bike</b>Cityzen </p>
+			</div>
+		</footer>
 	<!-- Scripts -->
 	<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 	<script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.1/js/bootstrap.min.js"></script>
+	<script src="{{ asset('/js/main.js') }}"></script>
+	
 </body>
 </html>
