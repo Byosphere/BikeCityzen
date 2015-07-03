@@ -17,3 +17,9 @@ Route::controllers([
 	'auth' => 'Auth\AuthController',
 	'password' => 'Auth\PasswordController',
 ]);
+
+Route::group(['namespace' => 'admin', 'prefix' => 'admin'], function(){
+	
+	Route::get('dashboard', 'BoardController@index');	
+	
+});

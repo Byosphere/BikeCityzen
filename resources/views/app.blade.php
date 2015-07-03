@@ -34,10 +34,17 @@
 				<li><a href="#">Réparation</a></li>
 				<li><a href="#">contact</a></li>
 			</ul>
+			@unless (Auth::check())
 			<ul class='nav nav-tabs connexion-menu'>
 				<li><a href="{{ url('/auth/register') }}">Inscription</a></li>
-				<li><a href="#">Se connecter</a></li>
+				<li><a href="{{ url('/auth/login') }}">Se connecter</a></li>
 			</ul>
+			@else 
+			<ul class='nav nav-tabs connexion-menu'>
+				<li><a href="#">{{ Auth::user()->name }}</a></li>
+				<li><a href="{{ url('/auth/logout') }}">Se déconnecter</a></li>
+			</ul>
+			@endif
 		</div>
 		<a href="#" class="button-menu">
 		</a>

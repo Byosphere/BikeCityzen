@@ -20,6 +20,7 @@ class CreateUsersTable extends Migration {
 			$table->string('password', 60);
 			$table->string('phone', 10);
 			$table->integer('reservation_id');
+			$table->string('role');
 			$table->rememberToken();
 			$table->timestamps();
 		});
