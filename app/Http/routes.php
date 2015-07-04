@@ -12,6 +12,12 @@
 */
 
 Route::get('/', 'HomeController@index');
+Route::get('/home', function(){
+
+	return redirect('/');
+});
+
+Route::get('/location', 'LocationController@index');
 
 Route::controllers([
 	'auth' => 'Auth\AuthController',
@@ -23,3 +29,7 @@ Route::group(['namespace' => 'admin', 'prefix' => 'admin'], function(){
 	Route::get('dashboard', 'BoardController@index');	
 	
 });
+	
+Route::resource('post', 'PostController');
+
+Route::get('/blog', 'PostController@index');

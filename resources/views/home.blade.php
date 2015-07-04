@@ -23,7 +23,7 @@
 <div class="tab partenaire">
 	<h2>PAGE DETAILS PARTENAIRES</h2>
 </div>
-<div class="tab contact">
+<div class="tab contact" id='contact'>
 	<h2>PAGE CONTACT</h2>
 </div>	
 <div class="tab map"></div>

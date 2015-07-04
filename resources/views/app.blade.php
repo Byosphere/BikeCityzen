@@ -4,7 +4,7 @@
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Laravel</title>
+	<title>BikeCityzen</title>
 
 	<link href="{{ asset('/css/app.css') }}" rel="stylesheet">
 	<link href="{{ asset('/css/style.css') }}" rel="stylesheet">
@@ -29,10 +29,11 @@
 				<div class="head-logo"><a href="#"><b>BIKE</b>CITYZEN</a></div>
 			</div>
 			<ul class='nav nav-tabs'>
-				<li><a href="#">Accueil</a></li>
-				<li><a href="#">Location</a></li>
-				<li><a href="#">Réparation</a></li>
-				<li><a href="#">contact</a></li>
+				<li><a href="{{ url('/') }}">Accueil</a></li>
+				<li><a href="{{ url('/blog') }}">Actualités</a></li>
+				<li><a href="">Louer</a></li>
+				<li><a href="">Réparation</a></li>
+				<li><a href="{{ url('/') }}#contact">contact</a></li>
 			</ul>
 			@unless (Auth::check())
 			<ul class='nav nav-tabs connexion-menu'>
@@ -49,12 +50,14 @@
 		<a href="#" class="button-menu">
 		</a>
 	</nav>
-		@yield('content')
-		<footer>
-			<div class="container">
-				<p>Copyright © 2015 <b>Bike</b>Cityzen </p>
-			</div>
-		</footer>
+
+	@yield('content')
+	<footer>
+		<div class="container">
+			<p>Copyright © 2015 <b>Bike</b>Cityzen </p>
+		</div>
+	</footer>
+
 	<!-- Scripts -->
 	<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 	<script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.1/js/bootstrap.min.js"></script>
