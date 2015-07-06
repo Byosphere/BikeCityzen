@@ -26,14 +26,14 @@
 				<div class="logo">
 					<img src="{{ asset('/img/logo.svg') }}" alt="">
 				</div>
-				<div class="head-logo"><a href="#"><b>BIKE</b>CITYZEN</a></div>
+				<div class="head-logo"><a href="{{ url('/') }}"><b>BIKE</b>CITYZEN</a></div>
 			</div>
 			<ul class='nav nav-tabs'>
 				<li><a href="{{ url('/') }}">Accueil</a></li>
 				<li><a href="{{ url('/blog') }}">Actualités</a></li>
-				<li><a href="">Louer</a></li>
+				<li><a href="{{ url('/location') }}">Location</a></li>
 				<li><a href="">Réparation</a></li>
-				<li><a href="{{ url('/') }}#contact">contact</a></li>
+				<li><a href="{{ url('/') }}#contact">Contact</a></li>
 			</ul>
 			@unless (Auth::check())
 			<ul class='nav nav-tabs connexion-menu'>

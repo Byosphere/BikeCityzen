@@ -2,6 +2,7 @@
 
 use Closure;
 use Illuminate\Contracts\Auth\Guard;
+use Session;
 
 class Authenticate {
 
@@ -40,6 +41,7 @@ class Authenticate {
 			}
 			else
 			{
+				Session::flash('info', "L'accès à cette page nécessite d'être connecté !");
 				return redirect()->guest('auth/login');
 			}
 		}

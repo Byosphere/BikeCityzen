@@ -3,10 +3,18 @@
 use Illuminate\Database\Eloquent\Model;
 
 class Reservation extends Model {
+	
+	protected $table = 'reservations';
 
 	public function user()
     {
-        return $this->belongsTo('App\Users');
+        return $this->belongsTo('App\User');
     }
+	
+	public function velo()
+	{
+		
+		return $this->hasOne('App\Velo');
+	}
 
 }

@@ -5,7 +5,7 @@
 <div class="cover">
 	<div class="container">
 		<div class="headlines">
-	        <h1 class="title">APPRÉCIEZ VOS DÉPLACEMENTS A DEUX ROUES</h1>
+	        <h1 class="title">SIMPLIFIEZ VOS VOYAGES A DEUX ROUES</h1>
 	        <p class="subtitle">LOCATION ET RÉPARATION DE VÉLOS</p>
 
 		</div>

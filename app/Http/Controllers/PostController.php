@@ -2,7 +2,7 @@
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
-
+use App\Post;
 use Illuminate\Http\Request;
 
 class PostController extends Controller {
@@ -14,7 +14,8 @@ class PostController extends Controller {
 	 */
 	public function index()
 	{
-		//
+		$articles = Post::orderBy('created_at', 'desc')->paginate(5);
+		return view('blog')->with(['articles' => $articles]);
 	}
 
 	/**
