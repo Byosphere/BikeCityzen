@@ -4,7 +4,6 @@
 <div class="container contenu">
   <div class="row">
     <h2>Administration</h2>
-    <p class="lead">Bootstrap makes front-end web development faster and easier. It's made for folks of all skill levels, devices of all shapes, and projects of all sizes.</p>
     <hr>
   </div>
   <div class="row">
@@ -26,6 +25,7 @@
         @endforelse
       </ul>
       <a href="{{url('post/create')}}" class="btn btn-default">Rédiger une actualité</a>
+      <a href="{{url('post/create')}}" class="btn btn-default">Toutes les actualités</a>
     </div>
     <!------------------------------>
     

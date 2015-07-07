@@ -21,7 +21,8 @@ class AdminMiddleware {
 			
 		}else {
 			
-			return redirect('/');
+			
+			return redirect()->guest('auth/login');
 		}
 		
 	}

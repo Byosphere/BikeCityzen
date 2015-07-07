@@ -1,6 +1,8 @@
 body {
   
   margin-bottom: 90px;
+  font-size: 15px;
+  font-weight: 400;
 }
 
 html {
@@ -14,6 +16,13 @@ html {
     float: right;
     font-size: 12px;
 }
+
+p > a {
+  
+  text-decoration: underline;
+  font-weight: bold;
+}
+
 /* ==========================================================================
    header
    ========================================================================== */
@@ -66,6 +75,12 @@ a, a:hover, a:focus {
     font-size: 2.5rem;
   }
   
+  .tab .img-responsive {
+    
+    display:inline;
+    text-align: center;
+  }
+  
 /* ==========================================================================
    Home
    ========================================================================== */
@@ -87,15 +102,17 @@ a, a:hover, a:focus {
   width: 100%;
   min-height: 600px;
   overflow: hidden;
+  text-align: center;
+  padding-bottom: 6rem;
 }
 
 .tab h2 {
   
   text-align: center;
   font-weight: bold;
-  color:white;
   letter-spacing: 2px;
   padding-top: 6rem;
+  margin: 0 0 2rem 0;
 }
 
 .login {
@@ -190,12 +207,24 @@ a, a:hover, a:focus {
 }
 
 /* ==========================================================================
+   Reparation
+   ========================================================================== */
+   
+.reparation {
+  
+  background-color:  #141b23;
+  color: white;
+  
+}
+
+/* ==========================================================================
    Contact
    ========================================================================== */
 
 .contact {
   
     background-color: #141b23;
+    color: white;
 }
 
 
