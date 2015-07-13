@@ -25,11 +25,13 @@ Route::controllers([
 ]);
 
 Route::group(['namespace' => 'admin', 'prefix' => 'admin'], function(){
-	
-	Route::get('dashboard', 'BoardController@index');	
-	
+
+	Route::get('dashboard', 'BoardController@index');
 });
-	
+
+Route::get('post/{id}/destroy', 'PostController@destroy');
+Route::get('velo/{id}/destroy', 'VeloController@destroy');
 Route::resource('post', 'PostController');
+Route::resource('velo', 'VeloController');
 
 Route::get('/blog', 'PostController@index');

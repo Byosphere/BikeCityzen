@@ -5,6 +5,7 @@ use Illuminate\Database\Eloquent\Model;
 use App\User;
 use App\Post;
 use App\Reservation;
+use App\Velo;
 
 class DatabaseSeeder extends Seeder {
 
@@ -53,6 +54,14 @@ Phasellus fringilla sem placerat erat mollis mollis ut rhoncus nunc. Etiam ornar
 			'demijournee' => '1436465508-a',
 			'velo_id' => 4,
 			'valide'=>false
+			
+		]);
+		
+		
+		Velo::create([
+			'modele' => 'Vélo de la mort',
+			'categorie' => 'enfant',
+			'image' => '/'
 			
 		]);
 	}

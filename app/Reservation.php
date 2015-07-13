@@ -12,9 +12,8 @@ class Reservation extends Model {
     }
 	
 	public function velo()
-	{
-		
-		return $this->hasOne('App\Velo');
-	}
+    {
+        return $this->belongsTo('App\Velo');
+    }
 
 }

@@ -28,28 +28,46 @@
 				</div>
 				<div class="head-logo"><a href="{{ url('/') }}"><b>BIKE</b>CITYZEN</a></div>
 			</div>
-			<ul class='nav nav-tabs'>
-				<li><a href="{{ url('/') }}">Accueil</a></li>
-				<li><a href="{{ url('/blog') }}">Actualités</a></li>
-				<li><a href="{{ url('/location') }}">Location</a></li>
-				<li><a href="">Réparation</a></li>
-				<li><a href="{{ url('/') }}#contact">Contact</a></li>
-			</ul>
+			<div class="visible-lg-block">
+				@unless (Auth::check())
+				<ul class='nav nav-tabs connexion-menu'>
+					<li><a href="{{ url('/auth/register') }}">Inscription</a></li>
+					<li><a href="{{ url('/auth/login') }}">Se connecter</a></li>
+				</ul>
+				@else
+				<ul class='nav nav-tabs connexion-menu'>
+					<li><a href="#">{{ Auth::user()->name }}</a></li>
+					<li><a href="{{ url('/auth/logout') }}">Se déconnecter</a></li>
+				</ul>
+				@endif
+				<ul class='nav nav-tabs'>
+					<li><a href="{{ url('/') }}">Accueil</a></li>
+					<li><a href="{{ url('/blog') }}">Actualités</a></li>
+					<li><a href="{{ url('/location') }}">Location</a></li>
+					<li><a href="">Réparation</a></li>
+					<li><a href="{{ url('/') }}#contact">Contact</a></li>
+				</ul>
+			</div>
+		</div>
+		<a href="#" class="button-menu hidden-lg"></a>
+	</nav>
+	<div class="hidden-lg side-panel" id="side-panel">
+		<ul class='nav nav-tabs'>
+			<li><a href="{{ url('/') }}">Accueil</a></li>
+			<li><a href="{{ url('/blog') }}">Actualités</a></li>
+			<li><a href="{{ url('/location') }}">Location</a></li>
+			<li><a href="">Réparation</a></li>
+			<li><a href="{{ url('/') }}#contact">Contact</a></li>
+			<hr>
 			@unless (Auth::check())
-			<ul class='nav nav-tabs connexion-menu'>
 				<li><a href="{{ url('/auth/register') }}">Inscription</a></li>
 				<li><a href="{{ url('/auth/login') }}">Se connecter</a></li>
-			</ul>
-			@else 
-			<ul class='nav nav-tabs connexion-menu'>
+			@else
 				<li><a href="#">{{ Auth::user()->name }}</a></li>
 				<li><a href="{{ url('/auth/logout') }}">Se déconnecter</a></li>
-			</ul>
 			@endif
-		</div>
-		<a href="#" class="button-menu">
-		</a>
-	</nav>
+		</ul>
+	</div>
 
 	@yield('content')
 	<footer>
@@ -62,6 +80,6 @@
 	<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 	<script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.1/js/bootstrap.min.js"></script>
 	<script src="{{ asset('/js/main.js') }}"></script>
-	
+
 </body>
 </html>

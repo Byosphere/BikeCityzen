@@ -1,5 +1,5 @@
 body {
-  
+
   margin-bottom: 90px;
   font-size: 15px;
   font-weight: 400;
@@ -18,21 +18,22 @@ html {
 }
 
 p > a {
-  
+
   text-decoration: underline;
   font-weight: bold;
 }
+
 
 /* ==========================================================================
    header
    ========================================================================== */
 .nav-tabs {
-  
+
   border:none !important;
 }
 
 .nav-tabs > li > a {
-  
+
   border: none;
   color: #333333;
   border-radius: 0;
@@ -40,13 +41,13 @@ p > a {
 }
 
 a, a:hover, a:focus {
-  
+
   color: inherit;
   text-decoration: none;
 }
 
 .navigation {
-	
+
   background-color:rgba(255,255,255,1);
   border: none;
   width: 100%;
@@ -56,31 +57,31 @@ a, a:hover, a:focus {
   transition: all 0.2s;
   top:0;
 }
-  
+
   .navigation.top {
-    
+
     background-color:rgba(255,255,255,0.1);
   }
-  
+
   .navigation .container {
-    
+
       display: flex;
       align-items:center;
       position: relative;
   }
-  
+
   .head-logo {
-    
+
     margin-right: 50px;
     font-size: 2.5rem;
   }
-  
+
   .tab .img-responsive {
-    
+
     display:inline;
     text-align: center;
   }
-  
+
 /* ==========================================================================
    Home
    ========================================================================== */
@@ -88,17 +89,18 @@ a, a:hover, a:focus {
 .contenu {margin-top: 100px;}
 
 .cover {
-  
+
   height: 700px;
   overflow: hidden;
   background: url('../img/home.jpg') no-repeat center;
   background-size: auto;
-  border-bottom: 6px solid #141b23; 
+  border-bottom: 6px solid #141b23;
+  position: relative;
   }
-  
+
 
 .tab {
-  
+
   width: 100%;
   min-height: 600px;
   overflow: hidden;
@@ -107,7 +109,7 @@ a, a:hover, a:focus {
 }
 
 .tab h2 {
-  
+
   text-align: center;
   font-weight: bold;
   letter-spacing: 2px;
@@ -116,12 +118,12 @@ a, a:hover, a:focus {
 }
 
 .login {
-  
+
   margin-top: 70px;
 }
 
 .headlines {
-  
+
   margin-top: 90px;
 }
 
@@ -133,14 +135,14 @@ a, a:hover, a:focus {
 }
 
 .headlines .subtitle {
-  
+
   font-size: 2rem;
   font-weight: 400;
 
 }
 
 .logo {
-  
+
   float: left;
   width: 40px;
   height: 40px;
@@ -148,13 +150,13 @@ a, a:hover, a:focus {
 }
 
 .head-logo {
-  
+
   display: inline-block;
   margin-top: 3px;
 }
 
 .logo img {
-  
+
   width: 100%;
 }
 
@@ -174,47 +176,82 @@ a, a:hover, a:focus {
   width: 1em;
   height: 0.10em;
   background: #333333;
-  box-shadow: 
+  box-shadow:
     0 0.25em 0 0 #333333,
     0 0.5em 0 0 #333333;
 }
 
 .connexion-menu {
-  
+
   margin-left: 20px;
   position: absolute;
   right: 0;
 }
 
 .overwrap {
-  
+
   margin-top: 20px;
 }
 
+.socials {
+
+    position: absolute;
+    bottom: 20px;
+    color: white;
+}
+
+/* ==========================================================================
+   Side panel
+   ========================================================================== */
+.side-panel {
+
+    position: fixed;
+    height: 100%;
+    width: 300px;
+    background-color: #f2f2f2;
+    right: -300px;
+    z-index: 1000;
+    top: 60px;
+    border-right: 1px solid #ccc;
+    -webkit-transition:all 0.4s;
+    transition:all 0.5s;
+}
+
+.side-panel.open {
+
+    right: 0;
+}
+.side-panel ul {
+
+    display: flex;
+    flex-direction: column;
+    padding: 10px 1rem;
+
+}
 /* ==========================================================================
    Location
    ========================================================================== */
-   
+
 .location {
-  
+
   background:url('../img/shattered.png');
-  
+
 }
 
 .location h2 {
-  
+
   color:#333333;
 }
 
 /* ==========================================================================
    Reparation
    ========================================================================== */
-   
+
 .reparation {
-  
+
   background-color:  #141b23;
   color: white;
-  
+
 }
 
 /* ==========================================================================
@@ -222,7 +259,7 @@ a, a:hover, a:focus {
    ========================================================================== */
 
 .contact {
-  
+
     background-color: #141b23;
     color: white;
 }
@@ -233,7 +270,7 @@ a, a:hover, a:focus {
    Footer
    ========================================================================== */
 footer {
-  
+
   background-color: #141b23;
   height: 90px;
   position: absolute;
@@ -250,3 +287,9 @@ footer p {
   text-align: center;
   color:white;
 }
+
+
+
+/* ==========================================================================
+   Responsive
+   ========================================================================== */

@@ -19,5 +19,6 @@
 		</article>
 	@endforeach
 	</div>
+	<div class="page">{!! $articles->render() !!}</div>
 </div>
 @endsection

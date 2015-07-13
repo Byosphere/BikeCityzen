@@ -15,6 +15,9 @@ class CreateVelosTable extends Migration {
 		Schema::create('velos', function(Blueprint $table)
 		{
 			$table->increments('id');
+			$table->string('modele');
+			$table->string('categorie');
+			$table->string('image');
 			$table->timestamps();
 		});
 	}

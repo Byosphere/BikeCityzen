@@ -19,6 +19,8 @@ class CreatePostsTable extends Migration {
 			$table->longText('contenu');
 			$table->longText('chapo');
 			$table->string('slug');
+			$table->string('photo');
+			$table->boolean('publie');
 			$table->timestamps();
 		});
 	}

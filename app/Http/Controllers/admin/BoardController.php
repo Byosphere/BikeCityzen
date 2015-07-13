@@ -4,6 +4,7 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Post;
 use App\Reservation;
+use App\Velo;
 use Illuminate\Http\Request;
 use App\Services\Demijournee;
 
@@ -23,9 +24,10 @@ class BoardController extends Controller {
 	{
 		$posts = Post::orderBy('created_at', 'desc')->take(5)->get();
 		$reservations = Reservation::where('valide', '=', false)->get();
+		$velos = Velo::all();
 		$demijournee = new Demijournee();
 		
-		return view('admin.dashboard')->with(['posts'=>$posts, 'reservations'=>$reservations, 'demijournee' => $demijournee]);
+		return view('admin.dashboard')->with(['posts'=>$posts, 'reservations'=>$reservations, 'demijournee' => $demijournee, 'velos' => $velos]);
 	}
 
 	/**
