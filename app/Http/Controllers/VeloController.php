@@ -69,7 +69,7 @@ class VeloController extends Controller {
 				]);
 
 		}
-		// return redirect()->route('post.show', ['post'=>$article->id]);
+		return redirect('/admin/dashboard');
 	}
 
 	/**
@@ -154,7 +154,7 @@ class VeloController extends Controller {
 		if( file_exists ( $velo->image))
 			unlink($velo->image);
 		$velo->delete();
-		Session::flash('info', "L'article a bien été supprimé");
+		Session::flash('info', "L'élément a bien été supprimé");
 		return redirect('/admin/dashboard');
 	}
 

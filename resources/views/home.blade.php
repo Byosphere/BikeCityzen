@@ -63,7 +63,29 @@
 	<h2>PAGE DETAILS PARTENAIRES</h2>
 </div>
 <div class="tab contact" id='contact'>
-	<h2>PAGE CONTACT</h2>
+	<div class="container">
+		<h2>Pour nous contacter</h2>
+		<p class="lead">Nous répondrons au plus vite à toute question. N'hésitez pas !</p>
+		<div class="row">
+			<div class="col-sm-4">
+				<img src="{{ asset('/img/phone.svg') }}" alt="Sass and Less support" class="img-responsive">
+				<h3>Par téléphone</h3>
+				<p class="tel">00 00 00 00 00</p>
+			</div>
+			<div class="col-sm-4">
+				<img src="{{ asset('/img/mail.svg') }}" alt="Responsive across devices" class="img-responsive">
+				<h3>Par mail</h3>
+				<p>contact@bikecityzen.com</p>
+			</div>
+			<div class="col-sm-4">
+				<img src="{{ asset('/img/place.svg') }}" alt="Responsive across devices" class="img-responsive">
+				<h3>Sur place</h3>
+				<p><address class="">
+					 61 rue Antoine Primat, à Villeurbanne
+				</address></p>
+			</div>
+		</div>
+	</div>
 </div>
 <div class="tab map"></div>
 @endsection

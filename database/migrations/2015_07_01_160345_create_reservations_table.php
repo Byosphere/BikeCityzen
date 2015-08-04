@@ -15,7 +15,8 @@ class CreateReservationsTable extends Migration {
 		Schema::create('reservations', function(Blueprint $table)
 		{
 			$table->increments('id');
-			$table->string('demijournee');
+			$table->dateTime('dateDebut');
+			$table->dateTime('dateFin');
 			$table->integer('velo_id');
 			$table->boolean('valide');
 			$table->integer('user_id');

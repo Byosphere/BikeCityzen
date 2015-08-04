@@ -1,8 +1,9 @@
 <?php namespace App\Http\Controllers;
 
-use App\Http\Requests;
 use App\Http\Controllers\Controller;
-
+use App\Reservation;
+use Session;
+use App\Velo;
 use Illuminate\Http\Request;
 
 class LocationController extends Controller {
@@ -10,7 +11,7 @@ class LocationController extends Controller {
 
 	public function __construct()
 	{
-		
+
 		$this->middleware('auth');
 	}
 	/**
@@ -20,17 +21,16 @@ class LocationController extends Controller {
 	 */
 	public function index()
 	{
-		return view('location');
+		$velos = Velo::all();
+		$etape = 0;
+		return view('location')->with(['velos'=>$velos, 'etape'=>$etape]);
 	}
 
-	/**
-	 * Show the form for creating a new resource.
-	 *
-	 * @return Response
-	 */
-	public function create()
+
+	public function create(Request $request)
 	{
-		//
+		$velo = Velo::findOrFail($request->input('idVelo'));
+		dd($velo->reservation);
 	}
 
 	/**
@@ -76,15 +76,43 @@ class LocationController extends Controller {
 		//
 	}
 
-	/**
-	 * Remove the specified resource from storage.
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function destroy($id)
+	public function valider($id)
 	{
-		//
+		$res = Reservation::findOrFail($id);
+		$user = $res->user;
+
+		//on envoi le mail de confirmation à l'user
+		//dd($user->email);
+		$res->valide = 1;
+		$res->save();
+		Session::flash('info', "La réservation est validée, un mail a été envoyé à l'utilisateur");
+		return redirect()->back();
+	}
+
+	public function archiver($id)
+	{
+		$res = Reservation::findOrFail($id);
+		$user = $res->user;
+
+		//on envoi le mail de confirmation à l'user
+		//dd($user->email);
+		$res->valide = 2;
+		$res->save();
+		Session::flash('info', "La réservation a bien été archivée");
+		return redirect()->back();
+	}
+
+	public function refuser($id)
+	{
+		$res = Reservation::findOrFail($id);
+		$user = $res->user;
+
+		//on envoi le mail de confirmation à l'user
+		//dd($user->email);
+		$res->valide = 3;
+		$res->save();
+		Session::flash('info', "La réservation a bien été annulée");
+		return redirect()->back();
 	}
 
 }

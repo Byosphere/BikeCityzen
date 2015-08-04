@@ -36,7 +36,7 @@
 				</ul>
 				@else
 				<ul class='nav nav-tabs connexion-menu'>
-					<li><a href="#">{{ Auth::user()->name }}</a></li>
+					<li><a href="{{ route('user.show', ['id'=> Auth::user()->id]) }}">{{ Auth::user()->name }}</a></li>
 					<li><a href="{{ url('/auth/logout') }}">Se déconnecter</a></li>
 				</ul>
 				@endif

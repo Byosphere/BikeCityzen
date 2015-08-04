@@ -1,3 +1,5 @@
+var selectedVelo = 0;
+
 $(document).ready(function(){
 
 	$( window ).scroll(function() {
@@ -16,6 +18,24 @@ $(document).ready(function(){
 		$('#side-panel').toggleClass('open');
 		return false;
 
+	});
+
+	$('.velo').click(function() {
+
+		selectedVelo = $(this).attr('data-id');
+		$('.idVelo').val(selectedVelo);
+		$('.velo').removeClass('active');
+		$(this).addClass('active');
+
+	});
+
+	$('.buttonNext').click(function(){
+
+		if(selectedVelo ==0){
+
+			return false;
+
+		}
 	});
 
 });

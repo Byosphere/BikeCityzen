@@ -2,11 +2,11 @@
 
 @section('content')
 <div class="container contenu">
-  @if ( Session::has('info') )
-			<div class="alert alert-info">
-				{{ Session::get('info') }}
-			</div>
-	@endif
+    @if ( Session::has('info') )
+    	<div class="alert alert-info">
+    		{{ Session::get('info') }}
+    	</div>
+    @endif
   <div class="row">
     <h2>Administration</h2>
     <hr>
@@ -25,20 +25,20 @@
         <li class="list-group-item">
         @endif
           <div class="pull-right">
-          <a href="{{ route('post.edit', ['post' => $post->id]) }}">Éditer</a> | 
+          <a href="{{ route('post.edit', ['post' => $post->id]) }}">Éditer</a> |
           <a href="{{ url('post/'.$post->id.'/destroy') }}" class="text-danger">Supprimer</a>
           </div>
-          <a href="{{url('post/'.$post->id.'-'.$post->slug)}}">{{$post->titre}}</a> 
+          <a href="{{url('post/'.$post->id.'-'.$post->slug)}}">{{$post->titre}}</a>
         </li>
         @empty
         <div class="alert alert-info" role="alert">Vous n'avez encore posté aucune actualité !</div>
         @endforelse
       </ul>
       <a href="{{url('post/create')}}" class="btn btn-default">Rédiger une actualité</a>
-      <a href="{{url('post/liste')}}" class="btn btn-default">Toutes les actualités</a>
+      <a href="{{url('admin/listePosts')}}" class="btn btn-default">Toutes les actualités</a>
     </div>
     <!------------------------------>
-    
+
     <div class="col-sm-6">
       <h3>Stock de Vélos</h3>
       <hr>
@@ -46,11 +46,14 @@
       <ul class="list-group">
         @forelse ($velos as $velo)
           <li class="list-group-item">
+              <div class="miniature">
+                  <img src="{{$velo->image}}" alt="{{$velo->modele}}" />
+              </div>
             <div class="pull-right">
-            <a href="{{ route('velo.edit', ['velo' => $velo->id]) }}">Éditer</a> | 
+            <a href="{{ route('velo.edit', ['velo' => $velo->id]) }}">Éditer</a> |
             <a href="{{ url('velo/'.$velo->id.'/destroy') }}" class="text-danger">Supprimer</a>
             </div>
-            <a href="{{url('velo/'.$velo->id)}}">{{$velo->modele}}</a> 
+            <span>{{$velo->modele}}</span>
           </li>
         @empty
         <div class="alert alert-info" role="alert">Vous n'avez encore ajouté aucun vélo !</div>
@@ -61,7 +64,7 @@
   </div>
   <hr>
   <div class="row">
-    
+
     <!-- Reservations -->
     <div class="col-sm-12">
       <h3>Réservations</h3>
@@ -79,20 +82,33 @@
         </thead>
         <tbody>
           @forelse ($reservations as $res)
-          <tr>
+          @if($res->valide)
+          <tr class='success'>
+          @else
+          <tr class='active'>
+          @endif
             <td>{{ $res->user->name }}</td>
             <td><i>{{ $res->velo->modele }}</i></td>
             <td>{{ $res->user->email }}</td>
             <td>{{ $res->user->phone }}</td>
-            <td>{{ $demijournee->toText($res->demijournee) }}</td>
-            <td><button class='btn btn-success'>Valider</button> <button class='btn btn-danger'>Refuser</button></td>
+            <td>{{ $res->demijournee }}</td>
+            <td>
+            @if($res->valide)
+            <a class='btn btn-info' href="{{ url('location/archiver/'. $res->id) }}">Archiver</a></td>
+            @else
+            <a class='btn btn-success'href='{{ url('location/valider/'. $res->id) }}'>Valider</a>
+            <a class='btn btn-danger' href="{{ url('location/refuser/'. $res->id) }}">Refuser</a></td>
+            @endif
+
           </tr>
           @empty
           <div class="alert alert-info" role="alert">Vous n'avez aucune demande de reservation en cours !</div>
           @endforelse
         </tbody>
       </table>
+      <a href="{{url('admin/listeRes')}}" class="btn btn-default">Voir les archives</a>
     </div>
+    <br>
   </div>
 </div>
 @endsection

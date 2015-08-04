@@ -3,6 +3,7 @@ body {
   margin-bottom: 90px;
   font-size: 15px;
   font-weight: 400;
+  background-color: #EEE;
 }
 
 html {
@@ -23,6 +24,14 @@ p > a {
   font-weight: bold;
 }
 
+/*
+ * Système d'ombrage Google material design
+ */
+.boxShadow1 {box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);}
+.boxShadow2 {box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);}
+.boxShadow3 {box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);}
+.boxShadow4 {box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);}
+.boxShadow5 {box-shadow: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22);}
 
 /* ==========================================================================
    header
@@ -86,7 +95,7 @@ a, a:hover, a:focus {
    Home
    ========================================================================== */
 
-.contenu {margin-top: 100px;}
+.contenu {margin-top: 100px; padding-bottom: 20px;}
 
 .cover {
 
@@ -201,6 +210,73 @@ a, a:hover, a:focus {
 }
 
 /* ==========================================================================
+   Blog
+   ========================================================================== */
+
+.backPattern {
+
+    position: absolute;
+    height: 350px;
+    background:url('../img/shattered.png');
+    width: 100%;
+    top: 0;
+    z-index: -2;
+}
+
+.listeArticles {
+
+    position: relative;
+    z-index: 1;
+}
+
+article.blog {
+
+    padding: 2rem 5rem;
+    background-color: white;
+    margin: 30px 0;
+    z-index: 8;
+}
+
+.photo {
+
+    margin-bottom: 20px;
+    max-height: 350px;
+    overflow: hidden;
+}
+.photo img{
+
+    max-width: 100%;
+}
+.chapo {
+
+    margin-bottom: 30px;
+}
+
+.chapo p {
+
+    margin: 0;
+}
+
+.page {
+
+    text-align: center;
+}
+
+.more {
+
+    margin: 20px 0;
+    text-align: right;
+
+}
+.more a {
+
+    padding: 0.5em 1em;
+    background-color: #141b23;
+    color: white;
+    display: inline-block;
+}
+
+/* ==========================================================================
    Side panel
    ========================================================================== */
 .side-panel {
@@ -241,6 +317,63 @@ a, a:hover, a:focus {
 .location h2 {
 
   color:#333333;
+}
+
+.reservation {
+
+    max-width: 50em;
+    margin:inherit auto;
+    font-size: 2em;
+    font-weight: 100;
+    text-align: center;
+}
+
+.reservation .velo {
+
+    width: 400px;
+    height: 300px;
+    display: inline-block;
+    vertical-align: top;
+    border: 1px solid #666666;
+    margin: 20px;
+    position: relative;
+    -webkit-transition:all 0.2s;
+    transition:all 0.2s;
+    cursor: pointer;
+
+}
+
+.reservation .velo:hover {
+
+    background-color: rgba(0, 0, 0, 0.1);
+}
+
+.reservation .velo.active {
+
+    background-color:rgba(0, 0, 0, 0.3);
+}
+
+
+.velo figure {
+
+    padding: 1rem;
+}
+
+.velo span {
+
+    position: absolute;
+    background-color: #888888;
+    color: white;
+    font-size:2rem;
+    padding: 0.5rem;
+    right: 0;
+    text-transform: capitalize;
+}
+
+.velo img {
+
+    width: 300px;
+    height: 250px;
 }
 
 /* ==========================================================================
@@ -288,7 +421,22 @@ footer p {
   color:white;
 }
 
+/* ==========================================================================
+   admin
+   ========================================================================== */
 
+   .miniature {
+
+       display: inline-block;
+       width:50px;
+       height: 50px;
+       margin-right: 20px;
+   }
+   .miniature img {
+
+       width: auto;
+       height: 100%;
+   }
 
 /* ==========================================================================
    Responsive

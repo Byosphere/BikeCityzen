@@ -6,6 +6,7 @@ use App\Post;
 use Request;
 use Validator;
 use Session;
+use Input;
 use Illuminate\Support\Str;
 
 class PostController extends Controller {
@@ -15,10 +16,11 @@ class PostController extends Controller {
 	 *
 	 * @return Response
 	 */
-	 
+
 	public function index()
 	{
 		$articles = Post::where('publie', '=', true)->orderBy('created_at', 'desc')->paginate(5);
+		$articles->setPath('blog');
 		return view('blog')->with(['articles' => $articles]);
 	}
 
@@ -29,7 +31,7 @@ class PostController extends Controller {
 	 */
 	public function create()
 	{
-		
+
 		return view('articles.create');
 	}
 
@@ -49,26 +51,41 @@ class PostController extends Controller {
 		);
 
 		$validation = Validator::make(Request::all(), $regles);
-		
+
 		if($validation->fails()){
 			return redirect()->back()->withErrors($validation)->withInput();
 		} else {
-			
+
 			Request::input('publie') == 'oui'? $publie = true : $publie = false;
-			Request::input('photo') == null ? $photo = '': $photo = Request::input('photo');
-			
+			$slug = Str::slug(Request::input('titre'));
+			$photo = Input::file('photo');
+
+			if ($photo!=null && $photo->isValid()) {
+
+				$destinationPath = public_path().'\uploads\posts'; // upload path
+				$extension = $photo->getClientOriginalExtension(); // getting image extension
+				$fileName = uniqid('post'.$slug.'-').'.'.$extension; // renameing image
+				$uploadSuccess = $photo->move($destinationPath, $fileName);
+				if($uploadSuccess){
+					$path = asset('uploads/posts').'/'.$fileName;
+				}
+			} else {
+
+				$photo = '';
+			}
+
 			$article = Post::create([
 				'titre' => Request::input('titre'),
 				'contenu' => Request::input('contenu'),
-				'slug' => Str::slug(Request::input('titre')),
+				'slug' => $slug,
 				'chapo'=> Request::input('chapo'),
 				'publie' => $publie,
-				'photo' => $photo
+				'photo' => $path
 			]);
-			
+
 		}
 		return redirect()->route('post.show', ['post'=>$article->id]);
-		
+
 	}
 
 	/**
@@ -79,8 +96,8 @@ class PostController extends Controller {
 	 */
 	public function show($id)
 	{
-		$post = Post::findOrFail($id);
-		return view('articles.article')->with(['post' => $post]);
+		$article = Post::findOrFail($id);
+		return view('articles.article')->with(['article' => $article]);
 	}
 
 	/**
@@ -91,10 +108,10 @@ class PostController extends Controller {
 	 */
 	public function edit($id)
 	{
-		
+
 		$post = Post::findOrFail($id);
 		return view('articles.editer')->with(['post' => $post]);
-		
+
 	}
 
 	/**
@@ -114,22 +131,41 @@ class PostController extends Controller {
 		);
 		$article = Post::findOrFail($id);
 		$validation = Validator::make(Request::all(), $regles);
-		
+
 		if($validation->fails()){
 			return redirect()->back()->withErrors($validation)->withInput();
 		} else {
-			
+
+			$photo = Input::file('photo');
+			$slug = Str::slug(Request::input('titre'));
+
+			if ($photo!=null && $photo->isValid()) {
+
+				$destinationPath = public_path().'\uploads\posts'; // upload path
+				$extension = $photo->getClientOriginalExtension(); // getting image extension
+				$fileName = uniqid('post'.$slug.'-').'.'.$extension; // renameing image
+				$uploadSuccess = $photo->move($destinationPath, $fileName);
+				if($uploadSuccess){
+					$path = asset('uploads/posts').'/'.$fileName;
+				}
+			} else {
+
+				$path= '';
+			}
+
+
 			$article->titre = Request::input('titre');
 			$article->contenu = Request::input('contenu');
-			$article->slug = Str::slug(Request::input('titre'));
+			$article->slug = $slug;
 			$article->chapo = Request::input('chapo');
+			$article->photo = $path;
 			Request::input('publie') == 'oui'? $publie = true : $publie = false;
 			$article->publie = $publie;
 			$article->save();
-			
+
 		}
 		return redirect()->route('post.show', ['post'=>$id]);
-		
+
 	}
 
 	/**
@@ -142,14 +178,8 @@ class PostController extends Controller {
 	{
 		$article = Post::findOrFail($id);
 		$article->delete();
-		Session::flash('info', "L'article a bien été supprimé");	
+		Session::flash('info', "L'article a bien été supprimé");
 		return redirect('/admin/dashboard');
 	}
-	
-	public function liste()
-	{
-		
-	}
-
 
 }

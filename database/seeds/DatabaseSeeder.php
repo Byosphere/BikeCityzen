@@ -25,7 +25,7 @@ class DatabaseSeeder extends Seeder {
 			'password' => bcrypt('admin'),
 			'phone' => '0125654520',
 		]);
-		
+
 		Post::create([
 			'titre' => 'Exemple actu',
 			'contenu' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla sit amet congue nisi, eu egestas velit. Donec tincidunt nisi nec efficitur pretium. Aliquam arcu nisi, tristique in ex eget, ultricies accumsan erat. Aliquam erat volutpat. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Vivamus vitae massa ligula. Aenean fermentum tellus ut dapibus scelerisque. Morbi vel finibus nisl.
@@ -38,31 +38,40 @@ Phasellus fringilla sem placerat erat mollis mollis ut rhoncus nunc. Etiam ornar
 			'chapo' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla sit amet congue nisi, eu egestas velit. Donec tincidunt nisi nec efficitur pretium. Aliquam arcu nisi, tristique in ex eget, ultricies accumsan erat. Aliquam erat volutpat.',
 			'slug' => 'exemple-actu'
 		]);
-		
+
 		Reservation::create([
-			
+
 			'user_id' => 1,
-			'demijournee' => '1436179508-m',
+			'dateDebut' => '',
+			'dateFin' => '',
 			'velo_id' => 1,
 			'valide'=>false
-			
+
 		]);
-		
+
 		Reservation::create([
-			
+
 			'user_id' => 1,
-			'demijournee' => '1436465508-a',
-			'velo_id' => 4,
+			'dateDebut' => '',
+			'dateFin' => '',
+			'velo_id' => 2,
 			'valide'=>false
-			
+
 		]);
-		
-		
+
+
 		Velo::create([
 			'modele' => 'Vélo de la mort',
 			'categorie' => 'enfant',
-			'image' => '/'
-			
+			'image' => ''
+
+		]);
+
+		Velo::create([
+			'modele' => 'Véloette',
+			'categorie' => 'adulte',
+			'image' => ''
+
 		]);
 	}
 

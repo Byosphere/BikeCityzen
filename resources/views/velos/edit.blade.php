@@ -38,7 +38,7 @@
 					<div class="form-group @if($errors->has('image')) has-error  @endif">
 						<label class="col-md-4 control-label">Photo</label>
 						<div class="col-md-6">
-							<button class='btn btn-default btn-file'><input type="file" name="image">Importer une photo</button>
+							<div class='btn btn-default btn-file'><input type="file" name="image">Importer une photo</div>
 						</div>
 					</div>
 
