@@ -6,6 +6,7 @@ use App\User;
 use App\Post;
 use App\Reservation;
 use App\Velo;
+use App\Demijournee;
 
 class DatabaseSeeder extends Seeder {
 
@@ -42,8 +43,6 @@ Phasellus fringilla sem placerat erat mollis mollis ut rhoncus nunc. Etiam ornar
 		Reservation::create([
 
 			'user_id' => 1,
-			'dateDebut' => '',
-			'dateFin' => '',
 			'velo_id' => 1,
 			'valide'=>false
 
@@ -52,10 +51,24 @@ Phasellus fringilla sem placerat erat mollis mollis ut rhoncus nunc. Etiam ornar
 		Reservation::create([
 
 			'user_id' => 1,
-			'dateDebut' => '',
-			'dateFin' => '',
 			'velo_id' => 2,
 			'valide'=>false
+
+		]);
+
+		Demijournee::create([
+
+			'date' => '2010-05-02',
+			'periode' => 'am',
+			'reservation_id' => 1
+
+		]);
+
+		Demijournee::create([
+
+			'date' => '2011-07-01',
+			'periode' => 'pm',
+			'reservation_id' => 2
 
 		]);
 

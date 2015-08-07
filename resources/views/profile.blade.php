@@ -11,10 +11,10 @@
                     <input type="hidden" name="_method" value="PUT">
                     <fieldset>
                         <legend>Informations générales</legend>
-                        <div class="form-group @if($errors->has('nom')) has-error  @endif">
+                        <div class="form-group @if($errors->has('name')) has-error  @endif">
     						<label class="col-md-3 control-label">Nom</label>
     						<div class="col-md-6">
-    							<input type="text" class="form-control" name="nom" value="{{ old('nom') }}" placeholder="{{ $user->name }}">
+    							<input type="text" class="form-control" name="name" value="{{ old('name') }}" placeholder="{{ $user->name }}">
     						</div>
     					</div>
                         <div class="form-group @if($errors->has('email')) has-error  @endif">
@@ -44,22 +44,22 @@
                     <input type="hidden" name="_method" value="PUT">
                     <fieldset>
                         <legend>Changer de mot de passe</legend>
-                        <div class="form-group @if($errors->has('nom')) has-error  @endif">
+                        <div class="form-group @if($errors->has('oldPass')) has-error  @endif">
                             <label class="col-md-3 control-label">Ancien mot de passe</label>
                             <div class="col-md-6">
-                                <input type="text" class="form-control" name="nom" value="" >
+                                <input type="password" class="form-control" name="oldPass" value="" >
                             </div>
                         </div>
                         <div class="form-group @if($errors->has('pass')) has-error  @endif">
                             <label class="col-md-3 control-label">Nouveau mot de passe</label>
                             <div class="col-md-6">
-                                <input type="text" class="form-control" name="pass" value="">
+                                <input type="password" class="form-control" name="pass" value="">
                             </div>
                         </div>
-                        <div class="form-group @if($errors->has('pass2')) has-error  @endif">
+                        <div class="form-group @if($errors->has('pass_confirmation')) has-error  @endif">
                             <label class="col-md-3 control-label">Confirmer le nouveau mot de passe</label>
                             <div class="col-md-6">
-                                <input type="text" class="form-control" name="pass2">
+                                <input type="password" class="form-control" name="pass_confirmation">
                             </div>
                         </div>
                     </fieldset>
@@ -83,7 +83,13 @@
                         @forelse($user->reservations as $res)
                             <tr>
                                 <td>{{ $res->velo->modele }}</td>
-                                <td>{{ $res->demijournee }}</td>
+								<td><ul class="list-group">
+								@foreach($res->demijournees as $dj)
+								<li class="list-group-item">
+									<span class="badge">{{ $dj->periode }}</span>{{ $dj->date }}
+								</li>
+								@endforeach
+								</ul></td>
                                 @if($res->valide == 0)
                                 <td><span class="label label-warning">En attente de confirmation</span></td>
                                 @elseif($res->valide == 1)

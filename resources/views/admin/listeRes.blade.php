@@ -33,7 +33,13 @@
             <td><i>{{ $res->velo->modele }}</i></td>
             <td>{{ $res->user->email }}</td>
             <td>{{ $res->user->phone }}</td>
-            <td>{{ $res->demijournee }}</td>
+            <td><ul class="list-group">
+            @foreach($res->demijournees as $dj)
+            <li class="list-group-item">
+                <span class="badge">{{ $dj->periode }}</span>{{ $dj->date }}
+            </li>
+            @endforeach
+            </ul></td>
             @if($res->valide == 0)
             <td><span class="label label-warning">En attente de confirmation</span></td>
             @elseif($res->valide == 1)

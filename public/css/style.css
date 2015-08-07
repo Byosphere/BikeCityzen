@@ -209,6 +209,17 @@ a, a:hover, a:focus {
     color: white;
 }
 
+.location {
+
+  background:url('../img/shattered.png');
+
+}
+
+.location h2 {
+
+  color:#333333;
+}
+
 /* ==========================================================================
    Blog
    ========================================================================== */
@@ -304,20 +315,10 @@ article.blog {
     padding: 10px 1rem;
 
 }
+
 /* ==========================================================================
    Location
    ========================================================================== */
-
-.location {
-
-  background:url('../img/shattered.png');
-
-}
-
-.location h2 {
-
-  color:#333333;
-}
 
 .reservation {
 
@@ -325,9 +326,12 @@ article.blog {
     margin:inherit auto;
     font-size: 2em;
     font-weight: 100;
+
+}
+.listeVelos {
+
     text-align: center;
 }
-
 .reservation .velo {
 
     width: 400px;
@@ -428,14 +432,16 @@ footer p {
    .miniature {
 
        display: inline-block;
-       width:50px;
        height: 50px;
        margin-right: 20px;
+       overflow: hidden;
+       text-align: center;
    }
    .miniature img {
 
        width: auto;
        height: 100%;
+
    }
 
 /* ==========================================================================

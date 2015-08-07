@@ -21,7 +21,7 @@ Route::get('/location', 'LocationController@index');
 Route::get('/location/valider/{id}', 'LocationController@valider');
 Route::get('/location/archiver/{id}', 'LocationController@archiver');
 Route::get('/location/refuser/{id}', 'LocationController@refuser');
-Route::post('/location/reservation/', 'LocationController@create');
+
 
 Route::controllers([
 	'auth' => 'Auth\AuthController',
@@ -42,5 +42,6 @@ Route::get('velo/{id}/destroy', 'VeloController@destroy');
 Route::resource('post', 'PostController');
 Route::resource('velo', 'VeloController');
 Route::resource('user', 'UserController', ['except' => ['create', 'store']]);
+Route::resource('location', 'LocationController', ['only' =>['store', 'show']]);
 
 Route::get('/blog', 'PostController@index');

@@ -18,4 +18,10 @@ class Reservation extends Model {
         return $this->belongsTo('App\Velo');
     }
 
+	public function demijournees()
+	{
+		return $this->hasMany('App\Demijournee');
+
+	}
+
 }

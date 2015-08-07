@@ -25,6 +25,7 @@ class BoardController extends Controller {
         $posts = Post::orderBy('created_at', 'desc')->take(5)->get();
         $reservations = Reservation::where('valide', '<', 2)->get();
         $velos = Velo::all();
+
         return view('admin.dashboard')->with(['posts'=>$posts, 'reservations'=>$reservations, 'velos' => $velos]);
     }
 

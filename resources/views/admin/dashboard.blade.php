@@ -76,7 +76,8 @@
           <th>Vélo</th>
           <th>E-mail</th>
           <th>Tél</th>
-          <th>Date</th>
+          <th>Dates</th>
+          <th>Etat</th>
           <th>Actions</th>
           </tr>
         </thead>
@@ -91,7 +92,24 @@
             <td><i>{{ $res->velo->modele }}</i></td>
             <td>{{ $res->user->email }}</td>
             <td>{{ $res->user->phone }}</td>
-            <td>{{ $res->demijournee }}</td>
+            <td><ul class="list-group">
+            @foreach($res->demijournees as $dj)
+            <li class="list-group-item">
+                <span class="badge">{{ $dj->periode }}</span>{{ $dj->date }}
+            </li>
+            @endforeach
+            </ul></td>
+            @if($res->valide == 0)
+            <td><span class="label label-warning">En attente de confirmation</span></td>
+            @elseif($res->valide == 1)
+            <td><span class="label label-success">Validé</span></td>
+            @elseif($res->valide == 2)
+            <td><span class="label label-default">Terminé</span></td>
+            @elseif($res->valide == 3)
+            <td><span class="label label-danger">Réservation annulée</span></td>
+            @else
+            <td>Etat inconnu</td>
+            @endif
             <td>
             @if($res->valide)
             <a class='btn btn-info' href="{{ url('location/archiver/'. $res->id) }}">Archiver</a></td>

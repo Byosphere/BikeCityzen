@@ -1,6 +1,12 @@
 var selectedVelo = 0;
+var cpt=0;
 
 $(document).ready(function(){
+
+	$('.datepicker').datepicker({
+
+		format: 'dd-mm-yyyy'
+	});
 
 	$( window ).scroll(function() {
 		if($('body').scrollTop()>0){
@@ -27,6 +33,16 @@ $(document).ready(function(){
 		$('.velo').removeClass('active');
 		$(this).addClass('active');
 
+	});
+
+	$('.addDate').click(function() {
+
+		cpt++;
+		$('.blocDate').append("<div><input type='text' class='datepicker' name='date"+cpt+"'><select class='periode' name='periode"+cpt+"'><option value='am'>Matin</option><option value='pm'>Après-midi</option></select></div>");
+		$('.datepicker').datepicker({
+
+			format: 'dd-mm-yyyy'
+		});
 	});
 
 	$('.buttonNext').click(function(){
